@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <Button v-bind:typeBtn="typeBtn" v-bind:classBtn="classBtn" >{{textBtn}}</Button>
-    <ApartmentsList :items="items">
+    <Container>
+      <ApartmentFilter />
+    </Container>
+    <ApartmentsList :items="apartments">
       <template v-slot:title>
         <p class="title">Подборка согласно выбора</p>
       </template>
@@ -11,35 +13,31 @@
           :price="apartment.price" 
           :rating="apartment.rating" 
           :descr="apartment.descr" 
-          :imgSrc="apartment.imgUrl"/>
+          :imgSrc="apartment.imgUrl"
+          />
       </template>
     </ApartmentsList>
   </div>
 </template>
 
 <script>
-import Button from './components/shared/Button.vue'
 import ApartmentsList from './components/apartments/ApartmentsList.vue'
 import ApartmentsItem from './components/apartments/ApartmentsItem.vue'
 import apartments from './components/apartments/apartments.js'
+import Container from './components/shared/Container.vue'
+import ApartmentFilter from './components/apartments/ApartmentFilter.vue'
+
 export default {
   name: 'App',
   components: {
-    Button,
     ApartmentsList,
-    ApartmentsItem
+    ApartmentsItem,
+    Container,
+    ApartmentFilter
   },
   data() {
     return {
-      typeBtn: 'submit',
-      classBtn: 'btn',
-      textBtn: 'Click me',
-      items: apartments
-    }
-  },
-  methods: {
-    buttonClick(){
-      console.log('click')
+      apartments: apartments
     }
   }
 }

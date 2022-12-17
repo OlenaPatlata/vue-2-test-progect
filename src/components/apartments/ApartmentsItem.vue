@@ -64,7 +64,7 @@ import StarRating from '../shared/StarRating.vue';
     position: relative;
     padding: 20px;
     opacity: 0;
-    transition: opacity 0.4s;
+    transition: opacity 0.4s linear;
     background: rgba(#0f1d2d, 0.7);
     min-height: 200px;
     color: $main-bg-color;

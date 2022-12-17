@@ -2,21 +2,23 @@
   <div id="app">
     <Container>
       <ApartmentFilter />
-    </Container>
-    <ApartmentsList :items="apartments">
-      <template v-slot:title>
-        <p class="title">Подборка согласно выбора</p>
-      </template>
-      <template v-slot:apartment="{ apartment }">
-        <ApartmentsItem 
+      <ApartmentsList :items="apartments">
+        <template v-slot:title>
+          <div class="title-wrapper">
+            <p class="title">Подборка согласно выбора</p>
+          </div>
+        </template>
+        <template v-slot:apartment="{ apartment }">
+          <ApartmentsItem 
           :key="apartment.id" 
           :price="apartment.price" 
           :rating="apartment.rating" 
           :descr="apartment.descr" 
           :imgSrc="apartment.imgUrl"
           />
-      </template>
-    </ApartmentsList>
+        </template>
+      </ApartmentsList>
+    </Container>
   </div>
 </template>
 
@@ -53,6 +55,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   background: $main-bg-color;
+}
+.title-wrapper{
+  padding-bottom: 20px;
 }
 .title{
   text-align: left;

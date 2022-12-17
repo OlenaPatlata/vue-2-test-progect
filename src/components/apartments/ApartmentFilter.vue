@@ -1,8 +1,8 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit">
-    <CustomSelect :items="sities"/>
-    <CustomInput type="text" v-model="minPrice" placeholder="Цена от" />
-    <Button v-bind:typeBtn="typeBtn" v-bind:classBtn="classBtn" @click="handleSubmit">{{textBtn}}</Button>
+    <CustomSelect :items="sities" margin="right-margin"/>
+    <CustomInput type="text" v-model="minPrice" placeholder="Price from" margin="right-margin"/>
+    <Button v-bind:typeBtn="typeBtn" v-bind:classBtn="classBtn" >{{textBtn}}</Button>
   </form>
 </template>
 
@@ -19,7 +19,7 @@ import sities from './sities';
         minPrice: '',
         classBtn: 'btn',
         typeBtn: 'submit',
-        textBtn: 'Click me'
+        textBtn: 'Selection of housing'
       }
     },
     components: {
@@ -39,13 +39,15 @@ import sities from './sities';
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/scss/mixin.scss';
 .form {
+  padding-top: 60px;
+  padding-bottom: 39px;
   display: flex;
-  &__select {
-    margin-right: 30px;
-  }
-  &__submit {
-    margin-left: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include mq(tablet){
+    flex-wrap: nowrap;
   }
 }
 </style>

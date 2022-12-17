@@ -1,5 +1,5 @@
 <template>
-  <input v-on="listeners" class="custom-input" :placeholder="placeholder" >
+  <input v-on="listeners" class="custom-input" v-bind:class="margin" :placeholder="placeholder" >
 </template>
 
 <script>
@@ -10,6 +10,10 @@
     },
     props: {
       placeholder: {
+        type: String,
+        default: ''
+      },
+      margin: {
         type: String,
         default: ''
       }
@@ -24,6 +28,7 @@
 
 <style lang="scss" scoped>
 @import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixin.scss';
 .wrapper-input {
   position: relative;
   display: inline-flex;
@@ -51,5 +56,19 @@
     color: $error-color;
     line-height: 1.3;
   }
+}
+.right-margin{
+  margin-bottom: 20px;
+  @include mq(tablet){
+    margin-bottom: 0;
+    margin-right: 20px;
+    width: 200px;
+  }
+  @include mq(desktop){
+    margin-bottom: 0;
+    margin-right: 419px;
+    width: 220px;
+  }
+  
 }
 </style>

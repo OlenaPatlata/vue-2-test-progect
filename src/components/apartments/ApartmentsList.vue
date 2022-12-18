@@ -1,26 +1,26 @@
 <template>
   <div>
-  <slot name="title"></slot>
-  <ul class="apartments-list">
-    <template v-for="apartment in items">
-      <slot  name="apartment" v-bind:apartment="apartment"></slot>
-    </template>
-  </ul>
+    <slot name="title"></slot>
+    <ul class="apartments-list">
+      <template v-for="apartment in items">
+        <slot name="apartment" v-bind:apartment="apartment"></slot>
+      </template>
+    </ul>
   </div>
 
-  </template>
+</template>
 
 <script>
 
-  export default {
-    name: 'ApartmentsList',
-    props: {
-      items: {
-        type: Array,
-        default: ()=>{}
-      }
+export default {
+  name: 'ApartmentsList',
+  props: {
+    items: {
+      type: Array,
+      default: () => { }
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -31,6 +31,7 @@
   margin-right: -15px;
 } */
 @import '../../assets/scss/mixin.scss';
+
 .apartments-list {
   display: grid;
   max-width: calc(100vw);
@@ -42,13 +43,14 @@
   list-style: none;
   margin-left: auto;
   margin-right: auto;
-  @include mq(tablet){
+
+  @include mq(tablet) {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
-  @include mq(desktop){
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
-}
-}
 
+  @include mq(desktop) {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+  }
+}
 </style>

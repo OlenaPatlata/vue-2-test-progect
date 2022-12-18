@@ -3,6 +3,7 @@
     <div class="content">
       <Header />
       <Container>
+        <router-view></router-view>
         <ApartmentFilter class="apartments-filter" @submit="filter" />
         <div v-if="!filteredApartments?.length" class="title-wrapper">
           <p class="title">Nothing have found</p>
@@ -56,7 +57,7 @@ export default {
   },
   computed: {
     filteredApartments() {
-      return this.filterByCityName(this.filterByPricet(this.apartments))
+      return this.filterByCityName(this.filterByPrice(this.apartments))
     }
   },
   methods: {
@@ -71,7 +72,7 @@ export default {
         return apartment.location.city === this.filters.city
       })
     },
-    filterByPricet() {
+    filterByPrice() {
       if (!this.filters.price) return apartments
 
       return apartments.filter(apartment => {
@@ -94,6 +95,7 @@ export default {
   display: flex;
   flex-direction: column;
   background: $main-bg-color;
+  position: relative;
 }
 
 .content {

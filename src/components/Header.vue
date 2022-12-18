@@ -31,7 +31,10 @@ export default {
 @import '../assets/scss/mixin.scss';
 
 .header {
-
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  left: 0;
   background: $dark-bg-color;
   height: 60px;
   margin-left: auto;
@@ -55,7 +58,8 @@ export default {
   @include mq(desktop) {
     width: 1366px;
   }
-  &__wrapper{
+
+  &__wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;

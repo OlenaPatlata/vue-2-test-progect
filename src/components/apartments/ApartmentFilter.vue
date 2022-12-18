@@ -1,8 +1,18 @@
 <template>
-  <form class="form" @submit.prevent="handleSubmit">
-    <CustomSelect :items="sities" margin="right-margin"/>
-    <CustomInput type="text" v-model="minPrice" placeholder="Price from" margin="right-margin"/>
-    <Button v-bind:typeBtn="typeBtn" v-bind:classBtn="classBtn" >{{textBtn}}</Button>
+  <form class="apartments-filter" @submit.prevent="handleSubmit">
+    <CustomSelect 
+      :items="sities" 
+      v-model="city" 
+      margin="right-margin"/>
+    <CustomInput 
+      type="text" 
+      v-model="minPrice" 
+      placeholder="Price from" 
+      margin="right-margin"/>
+    <Button 
+      v-bind:typeBtn="typeBtn" 
+      v-bind:classBtn="classBtn" >{{textBtn}}
+    </Button>
   </form>
 </template>
 
@@ -19,7 +29,8 @@ import sities from './sities';
         minPrice: '',
         classBtn: 'btn',
         typeBtn: 'submit',
-        textBtn: 'Selection of housing'
+        textBtn: 'Selection of housing',
+        city: ''
       }
     },
     components: {
@@ -27,12 +38,16 @@ import sities from './sities';
       CustomInput,
       Button
     },
-  methods: {
+    methods: {
     buttonClick(){
       console.log('click')
     },
     handleSubmit(){
-      this.$emit('submit', 'form submited')
+      this.$emit('submit', 
+      {
+        city: this.city, 
+        price: this.minPrice}
+        )
     }
   }
   }
@@ -40,7 +55,7 @@ import sities from './sities';
 
 <style lang="scss" scoped>
 @import '../../assets/scss/mixin.scss';
-.form {
+.apartments-filter {
   padding-top: 60px;
   padding-bottom: 39px;
   display: flex;

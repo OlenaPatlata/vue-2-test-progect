@@ -54,7 +54,7 @@ export default [
   price: 2033,
   rating: 4.7,
   location: {
-    city: 'Kherson',
+    city: 'Kharkiv',
   },
   owner: {
     name: 'Ellen',
@@ -70,7 +70,7 @@ export default [
   price: 2033,
   rating: 4.7,
   location: {
-    city: 'Kherson',
+    city: 'Odesa',
   },
   owner: {
     name: 'Ellen',
@@ -86,7 +86,7 @@ export default [
   price: 2033,
   rating: 4.7,
   location: {
-    city: 'Kherson',
+    city: 'Dnipro',
   },
   owner: {
     name: 'Ellen',
@@ -102,7 +102,7 @@ export default [
   price: 2033,
   rating: 4.7,
   location: {
-    city: 'Kherson',
+    city: 'Odesa',
   },
   owner: {
     name: 'Ellen',
@@ -118,7 +118,7 @@ export default [
   price: 2033,
   rating: 4.7,
   location: {
-    city: 'Kherson',
+    city: 'Odesa',
   },
   owner: {
     name: 'Ellen',
@@ -134,7 +134,7 @@ export default [
   price: 2033,
   rating: 4.7,
   location: {
-    city: 'Kherson',
+    city: 'Odesa',
   },
   owner: {
     name: 'Ellen',

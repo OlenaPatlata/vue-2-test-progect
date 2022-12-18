@@ -1,4 +1,5 @@
 export default [
+  {value: '', label: 'City', selected: true},
   'Kyiv',
   'Kharkiv',
   'Odesa',

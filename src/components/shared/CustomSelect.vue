@@ -3,7 +3,8 @@
     <option 
       v-for="item in formattedItems" 
       :key="item?.value" 
-      :value="item?.value" >
+      :value="item?.value" 
+      :selected="item?.selected">
       {{item?.label}}
     </option>
 

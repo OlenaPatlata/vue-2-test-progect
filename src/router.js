@@ -1,10 +1,10 @@
-import Home from '../src/pages/Home.vue';
-import Login from '../src/pages/Login.vue';
+import HomePage from './pages/HomePage.vue';
+import ApartmentPage from './pages/ApartmentPage.vue';
 import VueRouter from 'vue-router'
 
 const routes = [
-  { path: '/home', component: Home },
-  { path: '/login', component: Login },
+  { path: '/', component: HomePage, name: 'home' },
+  { path: '/apartment', component: ApartmentPage, name: 'apartment' },
 ];
 const router = new VueRouter({routes, mode: 'history'})
 export default router

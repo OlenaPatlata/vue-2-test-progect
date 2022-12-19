@@ -24,12 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* .apartments-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
-} */
+
 @import '../../assets/scss/mixin.scss';
 
 .apartments-list {

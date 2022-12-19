@@ -12,7 +12,7 @@
         <div class="apartments-item__price">
           UAN {{price}}
         </div>
-        <a href="http://facebook.com" @click.prevent.stop="handleLinkClick">facebook</a>
+        <router-link :to="{name: 'apartment'}" class="apartments-item__link"></router-link>
       </div>
     </div>
 
@@ -41,11 +41,6 @@ import StarRating from '../shared/StarRating.vue';
         type: String,
         default: ''
       }
-    },
-    methods: {
-      handleLinkClick(){
-        console.log('facebook')
-      }
     }
   }
 </script>
@@ -54,9 +49,7 @@ import StarRating from '../shared/StarRating.vue';
 @import '../../assets/scss/variables.scss';
 .apartments-item {
   position: relative;
-  /* width: 33.333%;
-  padding: 0 15px;
-  margin-bottom: 30px; */
+
   &__inner {
     position: relative;
   }

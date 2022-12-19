@@ -2,83 +2,23 @@
   <div id="app">
     <div class="content">
       <Header />
-      <Container>
-        <router-view></router-view>
-        <ApartmentFilter class="apartments-filter" @submit="filter" />
-        <div v-if="!filteredApartments?.length" class="title-wrapper">
-          <p class="title">Nothing have found</p>
-        </div>
-        <ApartmentsList v-else :items="filteredApartments">
-          <template v-slot:title>
-            <div class="title-wrapper">
-              <p class="title">Selection according to choice</p>
-            </div>
-          </template>
-          <template v-slot:apartment="{ apartment }">
-            <ApartmentsItem :key="apartment.id" :price="apartment.price" :rating="apartment.rating"
-              :descr="apartment.descr" :imgSrc="apartment.imgUrl" />
-          </template>
-        </ApartmentsList>
-
-      </Container>
+      <router-view></router-view>
     </div>
     <Footer />
   </div>
 </template>
 
 <script>
-import ApartmentsList from './components/apartments/ApartmentsList.vue'
-import ApartmentsItem from './components/apartments/ApartmentsItem.vue'
-import apartments from './components/apartments/apartments.js'
-import Container from './components/shared/Container.vue'
-import ApartmentFilter from './components/apartments/ApartmentFilter.vue'
+
+
 import Footer from './components/Footer.vue'
 import Header from './components/Header.vue'
 
 export default {
   name: 'App',
   components: {
-    ApartmentsList,
-    ApartmentsItem,
-    Container,
-    ApartmentFilter,
     Footer,
     Header
-
-  },
-  data() {
-    return {
-      apartments: apartments,
-      filters: {
-        city: '',
-        price: 0
-      }
-    }
-  },
-  computed: {
-    filteredApartments() {
-      return this.filterByCityName(this.filterByPrice(this.apartments))
-    }
-  },
-  methods: {
-    filter({ city, price }) {
-      this.filters.city = city
-      this.filters.price = price
-    },
-    filterByCityName(apartments) {
-      if (!this.filters.city) return apartments
-
-      return apartments.filter(apartment => {
-        return apartment.location.city === this.filters.city
-      })
-    },
-    filterByPrice() {
-      if (!this.filters.price) return apartments
-
-      return apartments.filter(apartment => {
-        return apartment.price >= this.filters.price
-      })
-    }
   }
 }
 </script>
@@ -100,17 +40,5 @@ export default {
 
 .content {
   flex-grow: 1;
-}
-
-.title-wrapper {
-  padding-bottom: 20px;
-}
-
-.title {
-  text-align: left;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-
 }
 </style>

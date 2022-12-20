@@ -14,7 +14,7 @@
           </div>
         </template>
         <template v-slot:apartment="{ apartment }">
-          <ApartmentsItem :key="apartment.id" :price="apartment.price" :rating="apartment.rating"
+          <ApartmentsItem :key="apartment.id" :id="apartment.id" :price="apartment.price" :rating="apartment.rating"
             :descr="apartment.descr" :imgSrc="apartment.imgUrl" />
         </template>
       </ApartmentsList>

@@ -4,15 +4,17 @@
       <img :src="imgSrc" alt="" class="apartments-item__photo" />
       <div class="apartments-item__content">
         <p class="apartments-item__description">
-          {{descr}}
+          {{ descr }}
         </p>
         <div class="apartments-item__rating">
-          <StarRating :rating="rating"/>
+          <StarRating :rating="rating" />
         </div>
         <div class="apartments-item__price">
-          UAN {{price}}
+          UAN {{ price }}
         </div>
-        <router-link :to="{name: 'apartment'}" class="apartments-item__link"></router-link>
+        <router-link 
+        :to="{ name: 'apartment', params: { id: id }, query: {name: 'hhhjjjkkk'} }" 
+        class="apartments-item__link"></router-link>
       </div>
     </div>
 
@@ -21,38 +23,44 @@
 
 <script>
 import StarRating from '../shared/StarRating.vue';
-  export default {
-    components: {StarRating},
-    name: 'ApartmentsItem',
-    props: {
-      descr: {
-        type: String,
-        default: ''
-      },
-      rating: {
-        type: Number,
-        default: 0
-      },
-      price: {
-        type: Number,
-        required: true
-      },
-      imgSrc: {
-        type: String,
-        default: ''
-      }
+export default {
+  components: { StarRating },
+  name: 'ApartmentsItem',
+  props: {
+    id: {
+      type: String,
+      required: true
+    },
+    descr: {
+      type: String,
+      default: ''
+    },
+    rating: {
+      type: Number,
+      default: 0
+    },
+    price: {
+      type: Number,
+      required: true
+    },
+    imgSrc: {
+      type: String,
+      default: ''
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
 @import '../../assets/scss/variables.scss';
+
 .apartments-item {
   position: relative;
 
   &__inner {
     position: relative;
   }
+
   &__content {
     position: relative;
     padding: 20px;
@@ -65,22 +73,27 @@ import StarRating from '../shared/StarRating.vue';
     line-height: 1.4;
     cursor: pointer;
     z-index: 1;
+
     &:hover {
       opacity: 1;
     }
   }
+
   &__description {
     margin-bottom: 20px;
     max-height: calc(1em * 1.4 * 3);
     overflow: hidden;
   }
+
   &__rating {
     margin-bottom: 20px;
   }
+
   &__price {
     font-size: 20px;
     font-weight: 600;
   }
+
   &__photo {
     position: absolute;
     top: 0;
@@ -89,6 +102,7 @@ import StarRating from '../shared/StarRating.vue';
     height: 100%;
     object-fit: cover;
   }
+
   &__link {
     position: absolute;
     top: 0;

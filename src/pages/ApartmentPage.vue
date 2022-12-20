@@ -14,6 +14,9 @@ export default {
   name: 'ApartmentPage',
   components: {
     Container
+  },
+  mounted(){
+    console.log(this.$route.query.name)
   }
 }
 </script>

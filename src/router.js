@@ -1,10 +1,12 @@
-import Home from '../src/pages/Home.vue';
-import Login from '../src/pages/Login.vue';
-import VueRouter from 'vue-router'
+import HomePage from './pages/HomePage.vue';
+import ApartmentPage from './pages/ApartmentPage.vue';
+import ErrorPage from './pages/ErrorPage';
+import VueRouter from 'vue-router';
 
 const routes = [
-  { path: '/home', component: Home },
-  { path: '/login', component: Login },
+  { path: '/', component: HomePage, name: 'home' },
+  { path: '/apartments/:id', component: ApartmentPage, name: 'apartment' },
+  { path: '*', component: ErrorPage, name: 'error-page' },
 ];
-const router = new VueRouter({routes, mode: 'history'})
-export default router
+const router = new VueRouter({ routes, mode: 'history' });
+export default router;

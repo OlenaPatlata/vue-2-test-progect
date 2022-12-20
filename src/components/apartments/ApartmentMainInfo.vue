@@ -7,20 +7,27 @@
       </div>
       <img :src="apartment?.imgUrlBig" alt="" class="apartment-main-info__photo" />
       <div class="apartment-main-info__descr">{{ apartment?.descr }}</div>
-
+      <div class="button-wrapper"><Button classBtn="btn">Забронировать
+        </Button></div>
     </div>
     <div class="wrapper-right">
-      <p>444444444444</p>
+      <OwnerInfo :owner="apartment.owner" />
     </div>
+
+
   </article>
 </template>
 
 <script>
 import StarRating from '../shared/StarRating.vue';
+import Button from '../shared/Button.vue';
+import OwnerInfo from './OwnerInfo.vue';
 export default {
   name: 'ApartmentMainInfo',
   components: {
-    StarRating
+    StarRating,
+    Button,
+    OwnerInfo
   },
   props: {
     apartment: {
@@ -32,38 +39,52 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.apartment-main-info{
+
+.apartment-main-info {
   width: 100%;
   display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  &__title{
+  align-items: flex-start;
+  justify-content: space-between;
+
+  &__title {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
     padding-bottom: 20px;
   }
-  &__photo{
+
+  &__text {
+    margin-right: 20px;
+  }
+
+  &__photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  &__descr{
+
+  &__descr {
     padding-top: 30px;
     padding-bottom: 24px;
   }
 }
-.wrapper-left{
+
+.button-wrapper {
+  padding-left: 288px;
+  padding-right: 288px;
+}
+
+.wrapper-left {
   width: 70%;
   display: flex;
   flex-direction: column;
   margin-right: 30px;
 }
-.wrapper-right{
+.wrapper-right {
   width: 30%;
   display: flex;
   flex-direction: column;
-  background: gray;
+
 }
 </style>

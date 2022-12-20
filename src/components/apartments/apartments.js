@@ -13,7 +13,8 @@ export default [
     phone: '123-12-25',
     email: 'hfgy@ghjf.com'
   },
-  imgUrl: '/img/apartment-1-min.jpg'
+  imgUrl: '/img/apartment-1-min.jpg',
+  imgUrlBig: '/img/apartment-9big-min.jpg'
 },
   {
     id: '111111111111111111111112',
@@ -29,7 +30,8 @@ export default [
       phone: '123-12-26',
       email: 'hfgy@ghjf.com'
     },
-    imgUrl: '/img/apartment-2-min.jpg'
+    imgUrl: '/img/apartment-2-min.jpg',
+    imgUrlBig: '/img/apartment-9big-min.jpg'
 },
 {
   id: '111111111111111111111113',
@@ -45,7 +47,8 @@ export default [
     phone: '123-12-26',
     email: 'hfgy@ghjf.com'
   },
-  imgUrl: '/img/apartment-3-min.jpg'
+  imgUrl: '/img/apartment-3-min.jpg',
+  imgUrlBig: '/img/apartment-9big-min.jpg'
 },
 {
   id: '111111111111111111111114',
@@ -61,7 +64,8 @@ export default [
     phone: '123-12-26',
     email: 'hfgy@ghjf.com'
   },
-  imgUrl: '/img/apartment-4-min.jpg'
+  imgUrl: '/img/apartment-4-min.jpg',
+  imgUrlBig: '/img/apartment-9big-min.jpg'
 },
 {
   id: '111111111111111111111115',
@@ -77,7 +81,8 @@ export default [
     phone: '123-12-26',
     email: 'hfgy@ghjf.com'
   },
-  imgUrl: '/img/apartment-5-min.jpg'
+  imgUrl: '/img/apartment-5-min.jpg',
+  imgUrlBig: '/img/apartment-9big-min.jpg'
 },
 {
   id: '111111111111111111111116',
@@ -93,7 +98,8 @@ export default [
     phone: '123-12-26',
     email: 'hfgy@ghjf.com'
   },
-  imgUrl: '/img/apartment-6-min.jpg'
+  imgUrl: '/img/apartment-6-min.jpg',
+  imgUrlBig: '/img/apartment-9big-min.jpg'
 },
 {
   id: '111111111111111111111117',
@@ -109,7 +115,8 @@ export default [
     phone: '123-12-26',
     email: 'hfgy@ghjf.com'
   },
-  imgUrl: '/img/apartment-7-min.jpg'
+  imgUrl: '/img/apartment-7-min.jpg',
+  imgUrlBig: '/img/apartment-9big-min.jpg'
 },
 {
   id: '111111111111111111111118',
@@ -125,7 +132,8 @@ export default [
     phone: '123-12-26',
     email: 'hfgy@ghjf.com'
   },
-  imgUrl: '/img/apartment-8-min.jpg'
+  imgUrl: '/img/apartment-8-min.jpg',
+  imgUrlBig: '/img/apartment-9big-min.jpg'
 },
 {
   id: '111111111111111111111119',
@@ -141,6 +149,7 @@ export default [
     phone: '123-12-26',
     email: 'hfgy@ghjf.com'
   },
-  imgUrl: '/img/apartment-9-min.jpg'
+  imgUrl: '/img/apartment-9-min.jpg',
+  imgUrlBig: '/img/apartment-9big-min.jpg'
 }
 ]

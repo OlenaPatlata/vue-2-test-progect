@@ -12,6 +12,8 @@
     </div>
     <div class="wrapper-right">
       <OwnerInfo :owner="apartment.owner" />
+      <Reviews :reviews="reviewsList"/>
+
     </div>
 
 
@@ -22,12 +24,20 @@
 import StarRating from '../shared/StarRating.vue';
 import Button from '../shared/Button.vue';
 import OwnerInfo from './OwnerInfo.vue';
+import Reviews from '../reviews/Reviews.vue';
+import reviewsList from '../reviews/reviews.json'
 export default {
   name: 'ApartmentMainInfo',
+  data() {
+    return {
+      reviewsList: reviewsList
+    }
+  },
   components: {
     StarRating,
     Button,
-    OwnerInfo
+    OwnerInfo,
+    Reviews
   },
   props: {
     apartment: {
@@ -71,8 +81,9 @@ export default {
 }
 
 .button-wrapper {
-  padding-left: 288px;
-  padding-right: 288px;
+display: flex;
+align-items: center;
+justify-content: center
 }
 
 .wrapper-left {

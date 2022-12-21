@@ -8,7 +8,7 @@
       </div>
     </div>
     <ReviewItem v-for="review in currentReviews" :key="review.author" :review="review" />
-    <Button classBtn="btnMore" v-on:emit="showMoreReviews">{{restOfReviews ? `Read more...` : `That is all.`}}</Button>
+    <Button classBtn="btnMore" v-on:emit="showMoreReviews">{{togleBtnText ? `Read more...` : `That is all.`}}</Button>
   </section>
 </template>
 
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       limitReviews: 2,
-      restOfReviews: true
+      togleBtnText: true
     }
   },
   computed: {
@@ -45,20 +45,22 @@ export default {
       return this.reviews.length
     },
     currentReviews() {
-      return this.reviews.slice(0, this.limitReviews)
+      if(this.amountOfReviews > this.limitReviews){
+        return this.reviews.slice(0, this.limitReviews)
+      } else {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.togleBtnText=false
+        return this.reviews}
     },
   },
   methods: {
     showMoreReviews() {
-      if ((this.reviews.length - this.limitReviews) > 0) {
+      if ((this.amountOfReviews - this.limitReviews) > 0) {
         this.limitReviews += 1
       } 
-      if((this.reviews.length - this.limitReviews) === 0){
-        this.restOfReviews=false
+      if((this.amountOfReviews - this.limitReviews) === 0){
+        this.togleBtnText=false
       }
-    },
-    hideReviews(){
-      this.limitReviews =2
     }
   }
 }

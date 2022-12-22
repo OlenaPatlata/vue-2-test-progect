@@ -29,6 +29,7 @@ import ApartmentsItem from '../components/apartments/ApartmentsItem.vue'
 import apartments from '../components/apartments/apartments.js'
 import ApartmentFilter from '../components/apartments/ApartmentFilter.vue'
 import Container from '../components/shared/Container.vue'
+import { getApartmentsList } from '@/services/apartmen.service'
 
 
 
@@ -53,6 +54,15 @@ export default {
     filteredApartments() {
       return this.filterByCityName(this.filterByPrice(this.apartments))
     }
+  },
+  async created(){ //lifeCikleHook
+    try {
+      const data = await getApartmentsList()
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+    
   },
   methods: {
     filter({ city, price }) {

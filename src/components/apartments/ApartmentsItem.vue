@@ -13,7 +13,7 @@
           UAN {{ price }}
         </div>
         <router-link 
-        :to="{ name: 'apartment', params: { id: id }, query: {name: 'hhhjjjkkk'} }" 
+        :to="{ name: 'apartment', params: { id: id }, query: {name: 'h'} }" 
         class="apartments-item__link"></router-link>
       </div>
     </div>

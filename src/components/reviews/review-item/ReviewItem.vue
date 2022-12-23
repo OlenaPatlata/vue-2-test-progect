@@ -36,8 +36,11 @@ export default {
 .review-item__content{
   margin-top: 16px;
 
-  white-space: nowrap;
-  word-wrap: normal;
+  display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+  /* white-space: nowrap;
+  word-wrap: normal; */
   overflow: hidden;
   text-overflow: ellipsis;
 }

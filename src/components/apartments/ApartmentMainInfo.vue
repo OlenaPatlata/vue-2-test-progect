@@ -2,16 +2,16 @@
   <article class="apartment-main-info">
     <div class="wrapper-left">
       <div class="apartment-main-info__title">
-        <p class="apartment-main-info__text">{{ apartment.title }}</p>
+        <p class="apartment-main-info__text">{{ apartment.name }}</p>
         <StarRating :rating="apartment.rating" />
       </div>
-      <img :src="apartment?.imgUrlBig" alt="" class="apartment-main-info__photo" />
-      <div class="apartment-main-info__descr">{{ apartment?.descr }}</div>
+      <img :src="apartment.src" alt="" class="apartment-main-info__photo" />
+      <div class="apartment-main-info__descr">{{ apartment?.type }}</div>
       <div class="button-wrapper"><Button classBtn="btn">Забронировать
         </Button></div>
     </div>
     <div class="wrapper-right">
-      <OwnerInfo :owner="apartment.owner" />
+      <!-- <OwnerInfo :owner="apartment.owner" /> -->
       <Reviews :reviews="reviewsList"/>
 
     </div>
@@ -23,7 +23,7 @@
 <script>
 import StarRating from '../shared/StarRating.vue';
 import Button from '../shared/Button.vue';
-import OwnerInfo from './OwnerInfo.vue';
+// import OwnerInfo from './OwnerInfo.vue';
 import Reviews from '../reviews/Reviews.vue';
 import reviewsList from '../reviews/reviews.json'
 export default {
@@ -36,7 +36,7 @@ export default {
   components: {
     StarRating,
     Button,
-    OwnerInfo,
+    // OwnerInfo,
     Reviews
   },
   props: {

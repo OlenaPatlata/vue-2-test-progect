@@ -4,17 +4,25 @@
       <img :src="imgSrc" alt="" class="apartments-item__photo" />
       <div class="apartments-item__content">
         <p class="apartments-item__description">
-          {{ descr }}
+          Address: {{ address }}
+        </p>
+        <p class="apartments-item__description">
+          Type: {{ type }}
+        </p>
+        <p class="apartments-item__description">
+          Description: {{ name }}
         </p>
         <div class="apartments-item__rating">
           <StarRating :rating="rating" />
         </div>
         <div class="apartments-item__price">
-          UAN {{ price }}
+          {{ currency }} {{ price }}
         </div>
-        <router-link 
-        :to="{ name: 'apartment', params: { id: id }, query: {name: 'hhhjjjkkk'} }" 
-        class="apartments-item__link"></router-link>
+        <router-link :to="{
+          name: 'apartment', params: { id: id }, query: {
+            name: name, rating: rating, type: type, src: imgSrc, owner: userId
+          }
+        }" class="apartments-item__link"></router-link>
       </div>
     </div>
 
@@ -28,10 +36,18 @@ export default {
   name: 'ApartmentsItem',
   props: {
     id: {
-      type: String,
+      type: Number,
       required: true
     },
-    descr: {
+    address: {
+      type: String,
+      default: ''
+    },
+    type: {
+      type: String,
+      default: ''
+    },
+    name: {
       type: String,
       default: ''
     },
@@ -43,10 +59,19 @@ export default {
       type: Number,
       required: true
     },
+    currency: {
+      type: String,
+      default: ''
+    },
     imgSrc: {
       type: String,
       default: ''
+    },
+    userId: {
+      type: Number,
+      required: true
     }
+
   }
 }
 </script>
@@ -73,6 +98,8 @@ export default {
     line-height: 1.4;
     cursor: pointer;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
 
     &:hover {
       opacity: 1;

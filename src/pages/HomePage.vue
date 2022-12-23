@@ -14,8 +14,9 @@
           </div>
         </template>
         <template v-slot:apartment="{ apartment }">
-          <ApartmentsItem :key="apartment.id" :id="apartment.id" :price="apartment.price" :rating="apartment.rating"
-            :descr="apartment.descr" :imgSrc="apartment.imgUrl" />
+          <ApartmentsItem :key="apartment.id" :id="apartment.id" :price="apartment.price.total" :name="apartment.name"
+            :type="apartment.type" :rating="apartment.rating" :currency="apartment.currency" :userId="apartment.userId"
+            :address="apartment.address" :imgSrc="apartment.images[0]" />
         </template>
       </ApartmentsList>
     </Container>
@@ -26,9 +27,9 @@
 <script>
 import ApartmentsList from '../components/apartments/ApartmentsList.vue'
 import ApartmentsItem from '../components/apartments/ApartmentsItem.vue'
-import apartments from '../components/apartments/apartments.js'
 import ApartmentFilter from '../components/apartments/ApartmentFilter.vue'
 import Container from '../components/shared/Container.vue'
+import { getApartmentsList } from '../services/apartmen.service'
 
 
 
@@ -42,7 +43,7 @@ export default {
   },
   data() {
     return {
-      apartments: apartments,
+      apartments: () => [],
       filters: {
         city: '',
         price: 0
@@ -51,7 +52,18 @@ export default {
   },
   computed: {
     filteredApartments() {
-      return this.filterByCityName(this.filterByPrice(this.apartments))
+      return this.filterByCityName(this.filterByPrice(this.apartments,
+
+      ))
+    }
+  },
+  async created() { //Hook
+    try {
+      const { results } = await getApartmentsList()
+      // eslint-disable-next-line no-import-assign
+      this.apartments = results
+    } catch (error) {
+      console.log(error)
     }
   },
   methods: {
@@ -67,10 +79,10 @@ export default {
       })
     },
     filterByPrice() {
-      if (!this.filters.price) return apartments
+      if (!this.filters.price) return this.apartments
 
-      return apartments.filter(apartment => {
-        return apartment.price >= this.filters.price
+      return this.apartments.filter(apartment => {
+        return apartment.price.total >= this.filters.price
       })
     }
   }

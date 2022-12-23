@@ -8,7 +8,10 @@
       type="text" 
       v-model="minPrice" 
       placeholder="Price from" 
-      margin="right-margin"/>
+      margin="right-margin"
+      error-message="Field haven`t to be empty"
+      :rules="[(val)=>!!val]"
+      />
     <Button 
       v-bind:typeBtn="typeBtn" 
       v-bind:classBtn="classBtn" >{{textBtn}}

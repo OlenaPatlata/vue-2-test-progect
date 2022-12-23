@@ -11,5 +11,7 @@ export default [
   'Vinnytsia',
   'Chernihiv',
   'Poltava',
-  'Sumy'
+  'Sumy',
+  'Paris',
+  'London'
 ]

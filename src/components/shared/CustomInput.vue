@@ -1,38 +1,71 @@
 <template>
-  <input v-on="listeners" class="custom-input" v-bind:class="margin" :placeholder="placeholder" >
+  <div class="wrapper-input">
+    <input v-on="listeners" class="custom-input" v-bind:class="{rightMargin: true, 'custom-input__border': !isValid}" :placeholder="placeholder">
+    <span v-if="!isValid" class="custom-input__error">{{ errorMessage }}</span>
+  </div>
+
 </template>
 
 <script>
-  export default {
-    name: 'CustomInput',
-    emits: {
-      input: 'input'
+export default {
+  name: 'CustomInput',
+  data() {
+    return {
+      isValid: true
+    }
+  },
+  emits: {
+    input: 'input'
+  },
+  props: {
+    placeholder: {
+      type: String,
+      default: ''
     },
-    props: {
-      placeholder: {
-        type: String,
-        default: ''
-      },
-      margin: {
-        type: String,
-        default: ''
-      }
+    margin: {
+      type: String,
+      default: ''
     },
-    computed: {
-      listeners(){
-        return {...this.$listeners, input: event => this.$emit('input', event.target.value)}
-      }
+    errorMessage: {
+      type: String,
+      default: ''
+    },
+    rules: {
+      type: Array,
+      default: () => []
+    },
+    value: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    listeners() {
+      return { ...this.$listeners, input: event => this.$emit('input', event.target.value) }
+    }
+  },
+  watch: {
+    value(value) {
+      this.validate(value)
+    }
+  },
+  methods: {
+    validate(value) {
+      this.isValid = this.rules.every(rule => rule(value))
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
 @import '../../assets/scss/variables.scss';
 @import '../../assets/scss/mixin.scss';
+
 .wrapper-input {
   position: relative;
   display: inline-flex;
 }
+
 .custom-input {
   height: 40px;
   width: 100%;
@@ -41,12 +74,15 @@
   outline: none;
   line-height: inherit;
   padding: 8px 15px;
+
   &::placeholder {
     color: inherit;
   }
-  &--error {
+
+  &__border {
     border-color: $error-color;
   }
+
   &__error {
     position: absolute;
     top: 100%;
@@ -57,18 +93,21 @@
     line-height: 1.3;
   }
 }
-.right-margin{
+
+.rightMargin {
   margin-bottom: 20px;
-  @include mq(tablet){
+
+  @include mq(tablet) {
     margin-bottom: 0;
     margin-right: 20px;
     width: 200px;
   }
-  @include mq(desktop){
+
+  @include mq(desktop) {
     margin-bottom: 0;
     margin-right: 419px;
     width: 220px;
   }
-  
+
 }
 </style>

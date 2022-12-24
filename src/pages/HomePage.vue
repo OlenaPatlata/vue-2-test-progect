@@ -53,8 +53,8 @@ export default {
   computed: {
     filteredApartments() {
       return this.filterByCityName(this.filterByPrice(this.apartments,
-
       ))
+      // return this.apartments
     }
   },
   async created() { //Hook

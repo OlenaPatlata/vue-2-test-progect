@@ -14,6 +14,7 @@ import CustomInput from '../shared/CustomInput.vue';
 import Button from '../shared/Button.vue';
 import sities from './sities';
 import { isRequired, charLimit } from '@/utils/validationsRules';
+
 export default {
   name: 'ApartmentFilter',
   data() {

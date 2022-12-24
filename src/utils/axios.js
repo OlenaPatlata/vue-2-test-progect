@@ -1,10 +1,12 @@
 import axios from 'axios';
+const { VUE_APP_MY_KEY } = process.env;
+
 
 const axiosInstans = axios.create({
   baseURL: 'https://airbnb13.p.rapidapi.com',
   // timeout: 1000,
   headers: {
-    'X-RapidAPI-Key': '66bed59e2bmsh02fa274b712e18ep1b746fjsn6735c11e15ae',
+    'X-RapidAPI-Key': VUE_APP_MY_KEY,
     'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com',
   },
 });

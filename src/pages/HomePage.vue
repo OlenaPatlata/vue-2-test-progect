@@ -29,7 +29,7 @@ import ApartmentsList from '../components/apartments/ApartmentsList.vue'
 import ApartmentsItem from '../components/apartments/ApartmentsItem.vue'
 import ApartmentFilter from '../components/apartments/ApartmentFilter.vue'
 import Container from '../components/shared/Container.vue'
-import { getApartmentsList } from '../services/apartmen.service'
+// import { getApartmentsList } from '../services/apartmen.service'
 
 
 
@@ -52,20 +52,20 @@ export default {
   },
   computed: {
     filteredApartments() {
-      return this.filterByCityName(this.filterByPrice(this.apartments,
-      ))
-      // return this.apartments
+      // return this.filterByCityName(this.filterByPrice(this.apartments,
+      // ))
+      return this.apartments
     }
   },
-  async created() { //Hook
-    try {
-      const { results } = await getApartmentsList()
-      // eslint-disable-next-line no-import-assign
-      this.apartments = results
-    } catch (error) {
-      console.log(error)
-    }
-  },
+  // async created() { //Hook
+  //   try {
+  //     const { results } = await getApartmentsList()
+  //     // eslint-disable-next-line no-import-assign
+  //     this.apartments = results
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // },
   methods: {
     filter({ city, price }) {
       this.filters.city = city

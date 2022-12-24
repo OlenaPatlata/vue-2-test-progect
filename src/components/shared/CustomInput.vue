@@ -1,11 +1,7 @@
 <template>
   <div class="wrapper-input">
-    <input 
-    v-on="listeners"
-    v-bind="$attrs"
-    class="custom-input" 
-    v-bind:class="{rightMargin: true, 'custom-input__border': !isValid}" :placeholder="placeholder"
-    >
+    <input v-on="listeners" v-bind="$attrs" class="custom-input"
+      v-bind:class="{rightMargin: true, 'custom-input__border': !isValid}" :placeholder="placeholder">
     <span v-if="!isValid" class="custom-input__error">{{ error }}</span>
   </div>
 
@@ -24,6 +20,7 @@ export default {
     input: 'input'
   },
   inheritAttrs: false,
+  inject: ['form'],
   props: {
     placeholder: {
       type: String,
@@ -52,20 +49,31 @@ export default {
     }
   },
   watch: {
-    value(value) {
-      this.validate(value)
+    value() {
+      this.validate()
     }
+  },
+  mounted() {
+    if (!this.form) return
+    this.form.registerInput(this)
+  },
+  beforeDestroy() { //помнить про утечку памяти
+    if (!this.form) return
+    this.form.unRegisterInput(this)
   },
   methods: {
     validate(value) {
       this.isValid = this.rules.every((rule) => {
         const { hasPassed, message } = rule(value);
 
-        if (!hasPassed){
-          this.error= message || this.errorMessage;
+        if (!hasPassed) {
+          this.error = message || this.errorMessage;
         }
         return hasPassed
       });
+    },
+    reset(){
+      this.$emit('input', ''); //метод эмитит событие input с пустым значением
     }
   }
 }

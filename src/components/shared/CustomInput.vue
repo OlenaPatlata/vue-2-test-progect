@@ -1,7 +1,12 @@
 <template>
   <div class="wrapper-input">
-    <input v-on="listeners" class="custom-input" v-bind:class="{rightMargin: true, 'custom-input__border': !isValid}" :placeholder="placeholder">
-    <span v-if="!isValid" class="custom-input__error">{{ errorMessage }}</span>
+    <input 
+    v-on="listeners"
+    v-bind="$attrs"
+    class="custom-input" 
+    v-bind:class="{rightMargin: true, 'custom-input__border': !isValid}" :placeholder="placeholder"
+    >
+    <span v-if="!isValid" class="custom-input__error">{{ error }}</span>
   </div>
 
 </template>
@@ -11,12 +16,14 @@ export default {
   name: 'CustomInput',
   data() {
     return {
-      isValid: true
+      isValid: true,
+      error: ''
     }
   },
   emits: {
     input: 'input'
   },
+  inheritAttrs: false,
   props: {
     placeholder: {
       type: String,
@@ -51,7 +58,14 @@ export default {
   },
   methods: {
     validate(value) {
-      this.isValid = this.rules.every(rule => rule(value))
+      this.isValid = this.rules.every((rule) => {
+        const { hasPassed, message } = rule(value);
+
+        if (!hasPassed){
+          this.error= message || this.errorMessage;
+        }
+        return hasPassed
+      });
     }
   }
 }

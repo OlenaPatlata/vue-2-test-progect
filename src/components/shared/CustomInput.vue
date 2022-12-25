@@ -20,7 +20,9 @@ export default {
     input: 'input'
   },
   inheritAttrs: false,
-  inject: ['form'],
+  inject: {
+    form: { default: 'form' }
+  },
   props: {
     placeholder: {
       type: String,
@@ -55,6 +57,7 @@ export default {
   },
   mounted() {
     if (!this.form) return
+    console.log(this.form)
     this.form.registerInput(this)
   },
   beforeDestroy() { //помнить про утечку памяти

@@ -1,20 +1,21 @@
 <template>
-  <div class="apartment-page">
-    <Container>
-      <ApartmentMainInfo :apartment="apartment" />
-    </Container>
-
-  </div>
+  <SectionWithHeaderSpacer>
+    <div class="apartment-page">
+      <Container>
+        <ApartmentMainInfo :apartment="apartment" />
+      </Container>
+    </div>
+  </SectionWithHeaderSpacer>
 </template>
 
 <script>
 import Container from '../components/shared/Container.vue'
 import ApartmentMainInfo from '@/components/apartments/ApartmentMainInfo.vue'
-
+import SectionWithHeaderSpacer from '@/components/shared/SectionWithHeaderSpacer.vue'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'ApartmentPage',
-  components: { ApartmentMainInfo, Container },
+  components: { ApartmentMainInfo, Container, SectionWithHeaderSpacer },
   mounted() {
     console.log(this.$route.params)
     console.log(this.$route.query)

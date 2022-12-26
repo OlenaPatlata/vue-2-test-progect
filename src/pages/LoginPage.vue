@@ -1,13 +1,21 @@
 <template>
   <main class="login">
-
+    <AuthSection>
+      <LoginForm />
+    </AuthSection>
   </main>
 </template>
 
 <script>
-  export default {
-    name: 'LoginPage'
+import LoginForm from '../components/Login/index.vue'
+import AuthSection from '@/components/auth/AuthSection.vue';
+export default {
+  name: 'LoginPage',
+  components: {
+    LoginForm,
+    AuthSection
   }
+}
 </script>
 
 <style lang="scss" scoped>
